@@ -9,9 +9,21 @@
 
 ---
 
-## The problem
+## The problem we solved
 
-**Prompting is harder than code.** Code fails loudly. LLMs fail *silently and confidently*.
+| Problem (before) | Solution (this library) |
+|---|---|
+| LLM fails **silently and confidently** | Contracts + C1–C7 gates catch failure |
+| Schema drift / wrong shape | Typed validation before anything ships |
+| Blind retries hammer a dead API | **CircuitBreaker**: N failures → cooldown → reset |
+| «Hope the model behaves» | **LawBook HARD VETO** + GuardSuite |
+| Hallucinated facts ship to users | 3-line AntiHallucination check |
+| Prompt knowledge is tribal | **CatalogInjector** — laws/recipes in every prompt |
+
+**Prompting is harder than code.** Code fails loudly. LLMs fail silently.
+This library turns that into **engineering**.
+
+### Code vs LLM (why gates exist)
 
 | Classic software | LLM systems |
 |---|---|
