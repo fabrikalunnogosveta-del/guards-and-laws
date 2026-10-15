@@ -1,0 +1,73 @@
+{
+  "title": "Writing & Production Laws (sample catalog)",
+  "version": "1.0.0",
+  "description": "Extract-style law cards: psycho_mechanism + rules + enforcement. Full production catalog contains 48+7 laws.",
+  "laws": [
+    {
+      "id": "WS-01",
+      "name": "Three-act structure",
+      "category": "story_structure",
+      "psycho_mechanism": "The brain expects setup → conflict → resolution. Without that sequence the dopamine system does not reward completion.",
+      "rules": [
+        "Inciting incident in the first 12% of runtime",
+        "Midpoint mirrors the finale",
+        "All-is-lost at 85%",
+        "Climax in the last 10%"
+      ],
+      "violation": "Late inciting incident (>15%) → viewer leaves. No all-is-lost → victory feels unearned.",
+      "enforcement": "WARN",
+      "checks": [
+        {"fact": "inciting_incident_pct", "max": 15, "severity": "WARN", "message": "Inciting incident too late"},
+        {"fact": "climax_pct", "max": 95, "severity": "FLAG", "message": "Climax too late"}
+      ]
+    },
+    {
+      "id": "WS-04",
+      "name": "Open loop (Zeigarnik)",
+      "category": "story_structure",
+      "psycho_mechanism": "Unfinished tasks create cognitive tension; the brain demands closure.",
+      "rules": [
+        "Central question in the first 30 seconds",
+        "Mini-loops every 2–3 minutes",
+        "All loops closed by the finale (max 1 sequel hook)"
+      ],
+      "violation": "No question asked → no reason to stay. 3+ open loops → frustration.",
+      "enforcement": "FLAG",
+      "checks": [
+        {"fact": "open_question_s", "max": 30, "severity": "FLAG", "message": "Central question too late"},
+        {"fact": "open_loops_end", "max": 1, "severity": "WARN", "message": "Too many open loops at end"}
+      ]
+    },
+    {
+      "id": "WS-05",
+      "name": "Cold open",
+      "category": "story_structure",
+      "psycho_mechanism": "The first 5–8 seconds decide stay/leave before conscious thought.",
+      "rules": [
+        "Second 0–5 = emotion OR unanswered question",
+        "Cold open is the most dramatic moment, not a summary",
+        "Context after the title card"
+      ],
+      "violation": "Logo/greeting in the first 5s = viewer gone.",
+      "enforcement": "HARD VETO",
+      "checks": [
+        {"fact": "cold_open_s", "max": 5, "severity": "VETO", "message": "Cold open misses the 5s window"}
+      ]
+    },
+    {
+      "id": "DL-002",
+      "name": "Retinal fatigue / micro-impulse",
+      "category": "neuro_cinematography",
+      "psycho_mechanism": "Static frames are fully scanned in ~3.2s; after that retention bleeds ~4%/s without micro-impulses.",
+      "rules": [
+        "Dopamine kick every ~2.8s (zoom pulse / z-shift / tactile cue)",
+        "No static visual >3.5s without a kick"
+      ],
+      "violation": "Static hold >3.5s → retention bleed.",
+      "enforcement": "HARD VETO",
+      "checks": [
+        {"fact": "static_without_kick_s", "max": 3.5, "severity": "VETO", "message": "Static frame without micro-impulse"}
+      ]
+    }
+  ]
+}
