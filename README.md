@@ -1,4 +1,4 @@
-# llm-guards-and-laws
+# guards-and-laws
 
 **Production reliability layer for LLM systems — contracts, quality gates, repair loops, circuit breakers, and domain laws with hard enforcement.**
 
@@ -20,7 +20,7 @@
 | Hallucinated facts ship to users | 3-line AntiHallucination check |
 | Prompt knowledge is tribal | **CatalogInjector** — laws/recipes in every prompt |
 
-**Prompting is harder than code.** Code fails loudly. LLMs fail silently.
+**Making LLM output production-reliable is harder than writing the prompt.** Code fails loudly. LLMs fail silently and confidently.
 This library turns that into **engineering**.
 
 ### Code vs LLM (why gates exist)
